@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>تحليل المادتين 42 و 43 - القانون المدني</title>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a4d2e; /* أخضر غامق */
+            --secondary: #c9a227; /* ذهبي */
+            --bg: #f4f6f8;
+            --text: #333;
+            --slide-bg: #fff;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Tajawal', sans-serif;
+            background-color: var(--bg);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .slider-container {
+            width: 95%;
+            max-width: 1100px;
+            height: 95%;
+            max-height: 800px;
+            background: var(--slide-bg);
+            border-radius: 15px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            border-top: 6px solid var(--primary);
+            position: relative;
+        }
+
+        .slides-wrapper {
+            flex: 1;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .slide {
+            position: absolute;
+            top: 0; right: 0; width: 100%; height: 100%;
+            padding: 30px 40px;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+            transform: translateX(20px);
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+            pointer-events: none;
+        }
+
+        .slide.active {
+            opacity: 1;
+            transform: translateX(0);
+            pointer-events: all;
+            z-index: 1;
+        }
+
+        /* تنسيق النصوص */
+        h1, h2 { color: var(--primary); margin-bottom: 15px; font-family: 'Amiri', serif; }
+        h1 { font-size: 2.2rem; text-align: center; border-bottom: 3px solid var(--secondary); display: inline-block; padding-bottom: 10px; }
+        h2 { font-size: 1.8rem; border-bottom: 1px solid #ddd; padding-bottom: 5px; }
+        
+        p, li { font-size: 1.1rem; line-height: 1.7; color: #444; }
+        ul { margin-right: 20px; }
+        li { margin-bottom: 8px; }
+
+        /* تنسيق الغلاف */
+        .header-logos { text-align: center; color: #666; font-size: 0.9rem; line-height: 1.6; margin-bottom: 20px; font-weight: bold; }
+        .info-box { background: #f9f9f9; padding: 20px; border-radius: 10px; border: 1px solid #ddd; margin: 20px auto; width: 80%; display: flex; justify-content: space-between; text-align: right; }
+        
+        /* الصناديق التعريفية */
+        .def-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 15px; }
+        .def-card { background: #fffcf0; border: 1px solid #faeab8; border-right: 4px solid var(--secondary); padding: 10px 15px; border-radius: 5px; }
+        .def-title { color: var(--primary); font-weight: bold; display: block; margin-bottom: 5px; }
+
+        /* مربعات التحليل */
+        .analysis-box { background: #e8f5e9; border-left: 4px solid var(--primary); padding: 15px; margin: 10px 0; border-radius: 5px; }
+        
+        /* الإشكالية */
+        .problem-box { background: #34495e; color: white; padding: 20px; border-radius: 10px; text-align: center; margin-top: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        .problem-main { font-size: 1.3rem; font-weight: bold; margin-bottom: 15px; font-family: 'Amiri'; }
+        
+        /* التحكم */
+        .controls { height: 60px; background: #fff; border-top: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; padding: 0 30px; z-index: 10; }
+        .btn { background: var(--primary); color: white; border: none; padding: 10px 25px; border-radius: 30px; cursor: pointer; font-weight: bold; font-family: 'Tajawal'; transition: 0.3s; }
+        .btn:hover { background: #143d24; }
+        .btn:disabled { background: #ccc; cursor: not-allowed; }
+        .slide-num { font-weight: bold; color: #888; }
+
+    </style>
+</head>
+<body>
+
+<div class="slider-container">
+    
+    <div class="slides-wrapper">
+
+        <div class="slide active" style="text-align: center; justify-content: center;">
+            <div class="header-logos">
+                الجمهورية الجزائرية الديمقراطية الشعبية<br>
+                وزارة التعليم العالي والبحث العلمي<br>
+                جامعة د. مولاي الطاهر - سعيدة<br>
+                كلية الحقوق والعلوم السياسية | قسم القانون العام
+            </div>
+            
+            <h1>منهجية وتقنيات إعداد البحث العلمي</h1>
+            <div style="font-size: 1.2rem; color: #555; margin-bottom: 20px;">
+                تحليل المادتين 42 و 43 من القانون المدني الجزائري<br>
+                (الأهلية وعوارضها)
+            </div>
+
+            <div class="info-box">
+                <div>
+                    <strong style="color: var(--secondary);">إعداد الطالب:</strong><br>
+                    بولنوار ميلود
+                </div>
+                <div>
+                    <strong style="color: var(--primary);">إشراف الأستاذة:</strong><br>
+                    د. عمارة فتيحة
+                </div>
+            </div>
+            
+            <div style="margin-top: 20px; font-size: 0.9rem; color: #999;">
+                السنة الثانية ليسانس | السداسي الثاني | 2025-2026
+            </div>
+        </div>
+
+        <div class="slide">
+            <h2>أولاً: التحليل الشكلي للمادة 42</h2>
+            <div class="analysis-box">
+                <strong>نص المادة:</strong> يتعلق بانعدام الأهلية (الصغير غير المميز، المجنون، المعتوه).
+            </div>
+            <ul>
+                <li><strong>طبيعة النص:</strong> نص تشريعي (أمر 75-58 المتضمن القانون المدني).</li>
+                <li><strong>موقع النص:</strong> الكتاب الأول (الأحكام العامة) > الباب الثاني (الأشخاص) > الفصل الأول (الشخص الطبيعي).</li>
+                <li><strong>البنية الهيكلية:</strong> فقرتان.
+                    <ul>
+                        <li>الفقرة 1: تبدأ بـ "لا يكون أهلاً" وتنتهي بـ "جنون".</li>
+                        <li>الفقرة 2: تبدأ بـ "يعتبر غير مميز" وتنتهي بـ "عشرة سنة".</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <div class="slide">
+            <h2>تابع: البناء اللغوي والمصطلحات (م 42)</h2>
+            <p><strong>الأسلوب:</strong> خبري تقريري (استخدام النفي "لا يكون" والمبني للمجهول "يُعتبر" لتقرير القرينة القاطعة).</p>
+            
+            <div class="def-grid">
+                <div class="def-card">
+                    <span class="def-title">الأهلية</span>
+                    صلاحية الشخص لكسب الحقوق وتحمل الالتزامات.
+                </div>
+                <div class="def-card">
+                    <span class="def-title">التمييز</span>
+                    القدرة العقلية على إدراك طبيعة التصرف ونتائجه.
+                </div>
+                <div class="def-card">
+                    <span class="def-title">العته</span>
+                    آفة عقلية تنقص الفهم وتخلط الكلام (دون الجنون).
+                </div>
+                <div class="def-card">
+                    <span class="def-title">الجنون</span>
+                    اختلال العقل وفقدان الإدراك كلياً.
+                </div>
+            </div>
+            <p style="margin-top: 15px; font-size: 0.95rem;">
+                <strong>المصدر المادي:</strong> حماية فاقدي الإدراك واستقرار المعاملات.
+            </p>
+        </div>
+
+        <div class="slide">
+            <h2>التحليل الشكلي للمادة 43</h2>
+            <div class="analysis-box">
+                <strong>موضوع النص:</strong> نقص الأهلية (من بلغ سن التمييز، السفيه، ذو الغفلة).
+            </div>
+            <ul>
+                <li><strong>البنية:</strong> فقرة واحدة متصلة.</li>
+                <li><strong>الكلمات المفتاحية:</strong> سن التمييز، سن الرشد، سفيه، ذو غفلة، ناقص الأهلية.</li>
+                <li><strong>طريقة الصياغة:</strong>
+                    <ul>
+                        <li>صيغة العموم والشمول ("كل من بلغ...").</li>
+                        <li>أسلوب الإحالة ("وفقاً لما يقرره القانون").</li>
+                        <li>صياغة حصرية لفئات ناقصي الأهلية.</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <div class="slide">
+            <h2>المصطلحات الفنية (م 43)</h2>
+            <div class="def-grid">
+                <div class="def-card">
+                    <span class="def-title">سن الرشد</span>
+                    تمام 19 سنة كاملة (اكتمال العقل قانوناً).
+                </div>
+                <div class="def-card">
+                    <span class="def-title">السفيه</span>
+                    من يبذر ماله فيما لا فائدة فيه وعلى غير مقتضى العقل.
+                </div>
+                <div class="def-card">
+                    <span class="def-title">ذو الغفلة</span>
+                    طيب القلب الذي يسهل خداعه في المعاملات المالية.
+                </div>
+                <div class="def-card">
+                    <span class="def-title">ناقص الأهلية</span>
+                    من لديه تمييز لكنه غير مكتمل (تصرفاته بين الصحة والبطلان).
+                </div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <h2>ملاحظات شكلية مشتركة</h2>
+            <div style="background: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
+                <ul>
+                    <li><strong>التكامل التشريعي:</strong> المادتان تشكلان وحدة واحدة لتنظيم "التدرج في الأهلية".</li>
+                    <li><strong>التدرج المنطقي:</strong> الانتقال من الأشد (الانعدام - م42) إلى الأقل (النقص - م43).</li>
+                    <li><strong>المعايير المعتمدة:</strong>
+                        <br>1. معيار زمني (السن: 13 سنة، 19 سنة).
+                        <br>2. معيار عقلي/سلوكي (الجنون، العته، السفه، الغفلة).
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="slide">
+            <h2>ثانياً: التحليل الموضوعي</h2>
+            <p><strong>الفكرة العامة:</strong> ضبط المشرع لقواعد الأهلية (الوجوب والانعدام والنقص) بناءً على السن والحالة العقلية.</p>
+            
+            <h3>الأفكار الأساسية:</h3>
+            <ul>
+                <li><strong>معيار التمييز:</strong> هو مناط التكليف ومباشرة الحقوق.</li>
+                <li><strong>انعدام الأهلية (م42):</strong> حدد بسن 13 سنة أو وجود عارض (جنون/عته).</li>
+                <li><strong>نقص الأهلية (م43):</strong> يشمل المميز الذي لم يبلغ الرشد، والسفيه وذي الغفلة.</li>
+                <li><strong>الإحالة:</strong> ترك تفصيل الأحكام الإجرائية لقانون الأسرة والنصوص الأخرى.</li>
+            </ul>
+        </div>
+
+        <div class="slide">
+            <h2>الإشكالية والتساؤلات</h2>
+            <div class="problem-box">
+                <div class="problem-main">
+                    كيف نظم المشرع الجزائري التدرج في الأهلية المدنية، وما هي المعايير المعتمدة للتمييز بين الانعدام والنقص؟
+                </div>
+                <div style="text-align: right; font-size: 0.95rem; color: #ddd;">
+                    التساؤلات الفرعية:
+                    <ul>
+                        <li>كيف اعتمد المشرع السن كقرينة قانونية للتمييز؟</li>
+                        <li>ما الفرق في الأثر بين العوارض الذهنية (جنون) والسلوكية (سفه)؟</li>
+                        <li>هل يعد كل من بلغ سن الرشد كامل الأهلية حتماً؟ (إشكالية العارض غير المثبت).</li>
+                        <li>هل ورد السفه والغفلة على سبيل الحصر أم المثال؟</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide" style="text-align: center; justify-content: center;">
+            <h1>الخاتمة</h1>
+            <p>
+                نستنتج أن المشرع الجزائري وازن بدقة بين "حماية الشخص القاصر أو المصاب بعارض" وبين "استقرار المعاملات المالية"، وذلك من خلال معايير منضبطة (السن والحكم القضائي).
+            </p>
+            <br>
+            <h2 style="border: none; color: var(--secondary);">شكراً لحسن إصغائكم</h2>
+        </div>
+
+    </div>
+
+    <div class="controls">
+        <div class="slide-num" id="slideNum">1 / 9</div>
+        <div>
+            <button class="btn" id="prevBtn" onclick="changeSlide(-1)">السابق</button>
+            <button class="btn" id="nextBtn" onclick="changeSlide(1)">التالي</button>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+    const totalSlides = slides.length;
+    const slideNumDisplay = document.getElementById('slideNum');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+
+    function updateUI() {
+        // تحديث الشرائح
+        slides.forEach((slide, index) => {
+            if (index === currentSlide) {
+                slide.classList.add('active');
+            } else {
+                slide.classList.remove('active');
+            }
+        });
+
+        // تحديث الرقم
+        slideNumDisplay.textContent = `${currentSlide + 1} / ${totalSlides}`;
+
+        // تحديث الأزرار
+        prevBtn.disabled = currentSlide === 0;
+        nextBtn.disabled = currentSlide === totalSlides - 1;
+        
+        if (currentSlide === totalSlides - 1) {
+            nextBtn.textContent = "إنهاء";
+        } else {
+            nextBtn.textContent = "التالي";
+        }
+    }
+
+    function changeSlide(direction) {
+        currentSlide += direction;
+        if (currentSlide < 0) currentSlide = 0;
+        if (currentSlide >= totalSlides) currentSlide = totalSlides - 1;
+        updateUI();
+    }
+
+    // دعم لوحة المفاتيح
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') changeSlide(1); // لليسار (التالي في العربية)
+        if (e.key === 'ArrowRight') changeSlide(-1);
+    });
+
+    // التهيئة الأولية
+    updateUI();
+</script>
+
+</body>
+</html>
